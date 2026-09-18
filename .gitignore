@@ -1,0 +1,18 @@
+# OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# Logs and databases
+*.log
+pp-content/pp-media/storage/*
+!pp-content/pp-media/storage/index.php
+
+# Editor directories
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
