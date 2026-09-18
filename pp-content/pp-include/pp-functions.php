@@ -910,19 +910,19 @@
                 [
                     'type'     => 'Personal',
                     'priority' => 100,
-                    'pattern'  => '/You have received Tk ([\d,.]+) from (\d+)\.(?:\s*Ref[:\-]?\s*(\S+))? Fee Tk ([\d,.]+)\. Balance Tk ([\d,.]+)\. TrxID ([A-Z0-9]+) at ([\d\/:\s]+)/i',
+                    'pattern'  => '/You have received Tk ([\d,.]+) from ([0-9a-zA-Z*xX]+)\.(?:\s*Ref[:\-]?\s*(\S+))? Fee Tk ([\d,.]+)\. Balance Tk ([\d,.]+)\. TrxID ([A-Z0-9]+) at ([\d\/:\s]+)/i',
                     'map'      => ['amount', 'sender', 'ref', 'fee', 'balance', 'trxid', 'datetime']
                 ],
                 [
                     'type'     => 'Personal',
                     'priority' => 90,
-                    'pattern'  => '/Cash In Tk ([\d,.]+) from (\d+) successful\. Fee Tk ([\d,.]+)\. Balance Tk ([\d,.]+)\. TrxID ([A-Z0-9]+) at ([\d\/:\s]+)/i',
+                    'pattern'  => '/Cash In Tk ([\d,.]+) from ([0-9a-zA-Z*xX]+) successful\. Fee Tk ([\d,.]+)\. Balance Tk ([\d,.]+)\. TrxID ([A-Z0-9]+) at ([\d\/:\s]+)/i',
                     'map'      => ['amount', 'sender', 'fee', 'balance', 'trxid', 'datetime']
                 ],
                 [
                     'type'     => 'Merchant',
                     'priority' => 80,
-                    'pattern'  => '/You have received payment Tk ([\d,.]+) from (\d+)\.(?:\s*Ref[:\-]?\s*(\S+))? Fee Tk ([\d,.]+)\. Balance Tk ([\d,.]+)\. TrxID ([A-Z0-9]+) at ([\d\/:\s]+)/i',
+                    'pattern'  => '/You have received payment Tk ([\d,.]+) from ([0-9a-zA-Z*xX]+)\.(?:\s*Ref[:\-]?\s*(\S+))? Fee Tk ([\d,.]+)\. Balance Tk ([\d,.]+)\. TrxID ([A-Z0-9]+) at ([\d\/:\s]+)/i',
                     'map'      => ['amount', 'sender', 'ref', 'fee', 'balance', 'trxid', 'datetime']
                 ],
 
@@ -940,13 +940,13 @@
                 [
                     'type'     => 'Personal',
                     'priority' => 100,
-                    'pattern'  => '/Money Received\. Amount: Tk ([\d,.]+) Sender: (\d+)(?:\s*Ref[:\-]?\s*(\S+))? TxnID: ([A-Z0-9]+) Balance: Tk ([\d,.]+) ([\d\/:\s]+)/i',
+                    'pattern'  => '/Money Received\. Amount: Tk ([\d,.]+) Sender: ([0-9a-zA-Z*xX]+)(?:\s*Ref[:\-]?\s*(\S+))? TxnID: ([A-Z0-9]+) Balance: Tk ([\d,.]+) ([\d\/:\s]+)/i',
                     'map'      => ['amount', 'sender', 'ref', 'trxid', 'balance', 'datetime']
                 ],
                 [
                     'type'     => 'Personal',
                     'priority' => 90,
-                    'pattern'  => '/Cash In Received\. Amount: Tk ([\d,.]+) Uddokta: (\d+) TxnID: ([A-Z0-9]+) Balance: ([\d,.]+) ([\d\/:\s]+)/i',
+                    'pattern'  => '/Cash In Received\. Amount: Tk ([\d,.]+) Uddokta: ([0-9a-zA-Z*xX]+) TxnID: ([A-Z0-9]+) Balance: ([\d,.]+) ([\d\/:\s]+)/i',
                     'map'      => ['amount', 'sender', 'trxid', 'balance', 'datetime']
                 ],
 
@@ -996,7 +996,7 @@
                 [
                     'type'     => 'Personal',
                     'priority' => 100,
-                    'pattern'  => '/Tk\. ([\d,.]+) has been received from (\d+)\.(?:\s*Ref[:\-]?\s*(\S+))? Balance Tk\. ([\d,.]+)\. TrxID ([A-Z0-9]+) at ([\d\/:\s]+)\./i',
+                    'pattern'  => '/Tk\. ([\d,.]+) has been received from ([0-9a-zA-Z*xX]+)\.(?:\s*Ref[:\-]?\s*(\S+))? Balance Tk\. ([\d,.]+)\. TrxID ([A-Z0-9]+) at ([\d\/:\s]+)\./i',
                     'map'      => ['amount', 'sender', 'ref', 'balance', 'trxid', 'datetime']
                 ],
 
@@ -1021,7 +1021,7 @@
                 [
                     'type'     => 'Personal',
                     'priority' => 100,
-                    'pattern'  => '/Received Tk ([\d,.]+) from (\d+)\. Balance Tk\. ([\d,.]+)\. TxID: ([A-Z0-9]+)\./i',
+                    'pattern'  => '/Received Tk ([\d,.]+) from ([0-9a-zA-Z*xX]+)\. Balance Tk\. ([\d,.]+)\. TxID: ([A-Z0-9]+)\./i',
                     'map'      => ['amount', 'sender', 'balance', 'trxid']
                 ],
 
