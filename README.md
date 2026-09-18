@@ -1,4 +1,6 @@
-# 🐜 PipraPay — Open Source Self-Hosted Payment Automation Platform
+# 🐜 PipraPay Mod — Auto-Redirect to Merchant Site on Successful Payment (return_url Fix)
+
+> **Self-hosted payment automation platform (bKash, Nagad, Rocket, Upay & Global Gateways) — enhanced with automatic post-payment redirection to merchant sites.**
 
 <p align="center">
     <picture>
@@ -203,6 +205,14 @@ Even if the project is still evolving, contributions are welcome across multiple
    <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=piprapay/piprapay&type=date&legend=top-left" />
  </picture>
 </a>
+
+---
+
+## 🏷️ Search Keywords & Tags (SEO)
+
+`piprapay` · `piprapay mod` · `piprapay auto redirect` · `piprapay return url fix` · `piprapay redirect to site` · `piprapay script download` · `piprapay payment gateway` · `piprapay bkash nagad rocket` · `piprapay merchant return url` · `bangladesh payment automation script` · `self hosted payment gateway bangladesh` · `piprapay checkout redirect solution` · `piprapay github` · `piprapay free download`
+
+---
 
 ## 🛡️ License
 
