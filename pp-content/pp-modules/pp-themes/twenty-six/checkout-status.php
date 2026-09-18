@@ -203,7 +203,7 @@
                     $hasValidReturnUrl = (!empty($returnUrl) && $returnUrl !== '--');
                     $autoRedirect = (isset($data['options']['auto_redirect']) && $data['options']['auto_redirect'] !== '' && $data['options']['auto_redirect'] !== '--') ? $data['options']['auto_redirect'] : 'enabled';
                     $redirectDelay = (isset($data['options']['redirect_delay']) && is_numeric($data['options']['redirect_delay'])) ? (int)$data['options']['redirect_delay'] : 3;
-                    $isAutoRedirectActive = ($status === 'completed' && $hasValidReturnUrl && $autoRedirect !== 'disabled');
+                    $isAutoRedirectActive = (($status === 'completed' || $status === 'canceled') && $hasValidReturnUrl && $autoRedirect !== 'disabled');
 
                     if ($isAutoRedirectActive): 
                 ?>

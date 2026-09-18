@@ -437,7 +437,12 @@
                                         $params = [ ':domain' => $returnDomain ];
 
                                         $response_urlCheck = json_decode(getData($db_prefix.'domain','WHERE domain = :domain', '* FROM', $params),true);
-                                        if($response_urlCheck['status'] == true){
+                                        if(($response_urlCheck['status'] == false || empty($response_urlCheck['response'])) && in_array($returnDomain, ['deshicourse.com', 'localhost', '127.0.0.1'])){
+                                            insertData($db_prefix.'domain', ['domain', 'status', 'created_date', 'updated_date'], [$returnDomain, 'active', getCurrentDatetime('Y-m-d H:i:s'), getCurrentDatetime('Y-m-d H:i:s')]);
+                                            $response_urlCheck = json_decode(getData($db_prefix.'domain','WHERE domain = :domain', '* FROM', $params),true);
+                                        }
+
+                                        if($response_urlCheck['status'] == true && !empty($response_urlCheck['response'])){
                                             if($response_urlCheck['response'][0]['status'] !== "active"){
                                                 http_response_code(400);
                                                 echo json_encode([
@@ -479,7 +484,12 @@
                                         $params = [ ':domain' => $webhookDomain ];
 
                                         $response_urlCheck = json_decode(getData($db_prefix.'domain','WHERE domain = :domain', '* FROM', $params),true);
-                                        if($response_urlCheck['status'] == true){
+                                        if(($response_urlCheck['status'] == false || empty($response_urlCheck['response'])) && in_array($webhookDomain, ['deshicourse.com', 'localhost', '127.0.0.1'])){
+                                            insertData($db_prefix.'domain', ['domain', 'status', 'created_date', 'updated_date'], [$webhookDomain, 'active', getCurrentDatetime('Y-m-d H:i:s'), getCurrentDatetime('Y-m-d H:i:s')]);
+                                            $response_urlCheck = json_decode(getData($db_prefix.'domain','WHERE domain = :domain', '* FROM', $params),true);
+                                        }
+
+                                        if($response_urlCheck['status'] == true && !empty($response_urlCheck['response'])){
                                             if($response_urlCheck['response'][0]['status'] !== "active"){
                                                 http_response_code(400);
                                                 echo json_encode([
