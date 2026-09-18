@@ -25,6 +25,45 @@
   </a>
 </p>
 
+---
+
+## 📢 Disclaimer & Credits / ক্রেডিট ও কৃতজ্ঞতা
+
+> [!IMPORTANT]
+> **Full Credit goes to the original creators and maintainers of [PipraPay](https://github.com/PipraPay/PipraPay).**  
+> This repository is a modified/custom community build of the open-source PipraPay platform. We made a specific enhancement to solve the missing automatic redirection issue on successful payment verification. All core features, platform architecture, intellectual property, and original rights belong strictly to the [PipraPay project](https://piprapay.com) and its team.
+> 
+> **সম্পূর্ণ ক্রেডিট ও কৃতজ্ঞতা মূল [PipraPay](https://github.com/PipraPay/PipraPay) প্রজেক্ট ও এর মূল ডেভলপার টিমের।**  
+> এটি মূল PipraPay ওপেন সোর্স প্রজেক্টের একটি মোডিফাইড (Modified) ভার্সন। পেমেন্ট সফল হওয়ার পর স্বয়ংক্রিয়ভাবে মার্চেন্ট সাইটে রিডাইরেক্ট না হওয়ার সমস্যাটির সমাধানের জন্য এই পরিবর্তনটি যুক্ত করা হয়েছে। মূল সফটওয়্যারের যাবতীয় কৃতিত্ব PipraPay টিমের।
+
+---
+
+## 🔍 Problem & Solution / কী সমস্যা ছিল এবং কী সমাধান করা হয়েছে?
+
+### ❌ Problem in Original PipraPay (কী সমস্যা ছিল):
+- **English:** In the original PipraPay checkout flow, after a customer completed and verified a payment (via automated gateways, SMS matching, or manual submissions), the checkout page displayed the success/completed status, but it **did not automatically redirect** the customer back to the merchant's website (`return_url`). Customers had to manually notice and click the "Go to Site" button. If a customer closed the tab upon seeing "Payment Completed", the merchant website would often miss the customer's callback/session return.
+- **বাংলা:** মূল PipraPay-তে কাস্টমার যখন পেমেন্ট সম্পন্ন এবং ভেরিফাই করত, তখন সাকসেস পেজ দেখালেও গ্রাহককে **স্বয়ংক্রিয়ভাবে মার্চেন্ট সাইটে (`return_url`) রিডাইরেক্ট করার কোনো সিস্টেম ছিল না**। গ্রাহককে নিজ দায়িত্বে "Go to Site" বাটনে ক্লিক করতে হতো। অনেক ক্ষেত্রে গ্রাহক পেমেন্ট কমপ্লিট দেখে ট্যাব বন্ধ করে দিত, ফলে মার্চেন্ট সাইটে গ্রাহক ফেরত আসত না বা অর্ডার অটোমেটিক ফাইনাল হতে সমস্যা হতো।
+
+### ✅ Our Solution in this Mod (আমরা কী সমাধান করেছি):
+- **English:**
+  1. **Automatic Redirection with Visual Countdown:** When a transaction status reaches `completed`, a countdown banner is displayed (*"Redirecting to site in 3 seconds... [Redirect Now]"*). Once the timer hits zero, the browser immediately redirects to the merchant's `return_url` with parameters attached.
+  2. **Configurable in Admin Theme Settings:** Added two intuitive settings in the `twenty-six` theme settings:
+     - `Auto Redirect on Success`: Toggle `Enabled` or `Disabled`.
+     - `Redirect Delay (seconds)`: Customize the countdown duration in seconds (e.g. `0` for instant redirection, or `3` for standard countdown).
+  3. **Instant "Redirect Now" Button:** Customers who prefer not to wait for the countdown can click "Redirect Now" immediately.
+  4. **Multi-Language Support:** Full translation support added in English, Bengali, Hindi, Urdu, and Arabic.
+  5. **Universal Compatibility:** Handles all gateway types (automated gateways, tokenized gateways, SMS-verification, and manual verification).
+- **বাংলা:**
+  1. **কাউন্টডাউনসহ অটো-রিডাইরেক্ট:** পেমেন্ট ভেরিফাই বা সফল হওয়ার সাথে সাথেই চেকআউট পেজে একটি সুন্দর কাউন্টডাউন নোটিফিকেশন আসবে (*"৩ সেকেন্ডের মধ্যে সাইটে রিডাইরেক্ট করা হচ্ছে... [এখনই যান]"*) এবং কাউন্টডাউন শেষ হওয়া মাত্র গ্রাহককে স্বয়ংক্রিয়ভাবে মার্চেন্ট সাইটের `return_url`-এ নিয়ে যাবে।
+  2. **অ্যাডমিন প্যানেল থেকে নিয়ন্ত্রণযোগ্য:** থিম সেটিংসে দুটি নতুন অপশন যুক্ত করা হয়েছে:
+     - `Auto Redirect on Success`: রিডাইরেক্ট চালু বা বন্ধ রাখার অপশন (`Enabled` / `Disabled`)।
+     - `Redirect Delay (seconds)`: কাউন্টডাউনের সেকেন্ড সংখ্যা (যেমন: `0` দিলে তৎক্ষণাৎ রিডাইরেক্ট হবে, `3` দিলে ৩ সেকেন্ড কাউন্টডাউন হবে)।
+  3. **তাত্ক্ষণিক রিডাইরেক্ট বাটন:** কাস্টমার চাইলে অপেক্ষা না করে সাথে সাথে "Redirect Now" বাটনে ক্লিক করে মার্চেন্ট সাইটে চলে যেতে পারবেন।
+  4. **বহুভাষিক অনুবাদ:** ইংরেজি, বাংলা, হিন্দি, উর্দু ও আরবি ভাষায় রিডাইরেক্ট মেসেজের অনুবাদ যুক্ত করা হয়েছে।
+  5. **সকল গেটওয়েতে কার্যকর:** অটোমেশন, এসএমএস ভেরিফিকেশন বা যেকোনো গেটওয়ের পেমেন্ট কমপ্লিট হলেই এটি একইভাবে কাজ করবে।
+
+---
+
 PipraPay is the **first open-source payment automation system (AGPL-3.0)** — a self-hosted, plugin-based platform that unifies payment gateways, wallets, APIs, and SMS-based verification into one system.
 
 It helps developers and businesses **accept, verify, and automate payments from any method — API or non-API — in a single workflow.**
