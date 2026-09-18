@@ -230,13 +230,30 @@
               <div class="col-lg-12">
                 <label class="form-label">Gateway <span class="text-danger">*</span></label>
                 <select class="js-select" name="gateway" data-search="true" data-remove="true" data-placeholder="Select gateway" required>
+                    <option value="">Select gateway</option>
                     <?php
                         $gateways = [];
 
-                        $gatewayDirs = glob(__DIR__ . '/../../../pp-modules/pp-gateways/*', GLOB_ONLYDIR);
+                        $baseGateways = realpath(__DIR__ . '/../../../pp-modules/pp-gateways');
+                        if (!$baseGateways || !is_dir($baseGateways)) {
+                            $baseGateways = dirname(dirname(dirname(__DIR__))) . '/pp-modules/pp-gateways';
+                        }
+
+                        $gatewayDirs = [];
+                        if (is_dir($baseGateways)) {
+                            $scanned = scandir($baseGateways);
+                            foreach ($scanned as $item) {
+                                if ($item !== '.' && $item !== '..' && is_dir($baseGateways . '/' . $item)) {
+                                    $gatewayDirs[] = $baseGateways . '/' . $item;
+                                }
+                            }
+                        }
+
+                        if (empty($gatewayDirs)) {
+                            $gatewayDirs = glob(__DIR__ . '/../../../pp-modules/pp-gateways/*', GLOB_ONLYDIR) ?: [];
+                        }
 
                         foreach ($gatewayDirs as $dir) {
-
                             if (!file_exists($dir . '/class.php')) {
                                 continue;
                             }
@@ -255,6 +272,10 @@
                             $gatewayObj = new $class();
                             $gateways[$slug] = $gatewayObj->info();
                         }
+
+                        uasort($gateways, function($a, $b) {
+                            return strcasecmp($a['title'] ?? '', $b['title'] ?? '');
+                        });
 
                         foreach ($gateways as $slug => $gateway) {
                     ?>
